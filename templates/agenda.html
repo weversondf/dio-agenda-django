@@ -1,21 +1,44 @@
 {% extends "model-page.html" %}
 
 {% block content %}
-    <h2>Agendamentos</h2>
-    <a href="evento/">
-        <button type="button">Novo Evento</button>
-    </a>
-    <ul style="font-size: 18px">
+    <div class="col-12 text-center">
+            <span class="align-baseline"></span>
+
+    </div>
+
+    <div class="col-12">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Agendamentos de eventos</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for evento in eventos %}
-            <li>
-                <div style={% if evento.get_evento_atrasado %}
-                              "color:red"
-                            {% endif %}>
-                    {{ evento.titulo }} - {{ evento.get_data_evento }}
-                    ( <a href="evento/?id={{ evento.id }}">Editar</a>
-                    / <a href="evento/delete/{{ evento.id }}/">Excluir</a> )
-                </div>
-            </li>
+        <tr>
+            <td style={% if evento.get_evento_atrasado %}
+                                  "color:red"
+                                {% endif %}>{{ evento.titulo }} - {{ evento.get_data_evento }}</td>
+            <td>
+                <a href="evento/?id={{ evento.id }}" class="btn btn-success btn-sm text-center">Editar</a>
+                <a href="evento/delete/{{ evento.id }}/" class="btn btn-danger btn-sm text-center">Excluir</a>
+            </td>
+        </tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="2">
+            <a href="evento/">
+                    <button type="button" class="btn btn-info">Novo Evento</button>
+            </a>
+        </td>
+    </tr>
+    </tfoot>
+    </table>
+    </div>
+
 {% endblock %}
+
+
