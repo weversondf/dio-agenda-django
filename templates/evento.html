@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="col-12">
+<div class="col-12">
 <form class="form-horizontal" action="submit" method="POST">{% csrf_token %}
 <fieldset>
 
@@ -29,7 +29,7 @@
 <!-- Textarea -->
 <div class="form-group">
     <label class="col-md-4 control-label" for="textarea">Descrição</label>
-    <div class="col-md-4">                     
+    <div class="col-md-4">
     <textarea name="descricao" rows="5" cols="24" class="form-control input-md">{{ evento.descricao }}</textarea>
     </div>
 </div>
